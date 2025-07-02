@@ -6,7 +6,6 @@ A backend API for managing to-do tasks, built with **Spring Boot**, **Spring Dat
 
 - ✅ **CRUD** for tasks: create, retrieve, update, and delete
 - ✅ **JWT-based authentication** (access tokens only)
-- ✅ **Role-based access** (example: `USER` role)
 - ✅ Database initialization with `schema.sql` & `data.sql`
 - ✅ Docker Compose setup with MySQL and the Spring Boot service
 
@@ -15,20 +14,20 @@ A backend API for managing to-do tasks, built with **Spring Boot**, **Spring Dat
 ## 🧱 Project Structure
 
 ```text
-task-manager-web/
-├── public/
-├── src/
-│   ├── components/
-│   │   ├── LoginForm.js
-│   │   ├── TaskList.js
-│   │   └── TaskForm.js
-│   ├── services/
-│   │   ├── AuthService.js
-│   │   └── TaskService.js
-│   ├── App.js
-│   └── index.js
+src/
+├── main/
+│ ├── java/com/example/taskmanager/
+│ │ ├── controller/ ← REST APIs
+│ │ ├── dto/ ← Data Transfer Objects
+│ │ ├── entity/ ← JPA entity classes
+│ │ ├── repository/ ← Spring Data JPA repos
+│ │ ├── service/ ← Business and JWT logic
+│ │ └── config/ ← Security config & filters
+│ └── resources/
+│ ├── schema.sql ← DB schema (strict)
+│ ├── data.sql ← Initial sample data
+│ └── application.yml ← Configuration (DB, JWT secret)
 ```
-
 
 ---
 
