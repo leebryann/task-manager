@@ -1,0 +1,48 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: task-manager
+  sql:
+    init:
+      mode: never
+  datasource:
+    url: jdbc:mysql://localhost:3306/task_db
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 10
+      idle-timeout: 600000 # 10 minutes
+      connection-timeout: 30000 # 30 seconds
+      max-lifetime: 1800000 # 30 minutes
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        session:
+          events:
+            log:
+              LOG_QUERIES_SLOWER_THAN_MS: 1000 # 1 second
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+# Optional logging
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+    com:
+      example:
+        taskmanager: DEBUG
+
+jwt:
+  secret: J9uygAdJ1Uz8O+6wTQCMn1P5Q2cCEdjGoHYIQSU5LNo=
